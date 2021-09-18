@@ -1,4 +1,4 @@
-package supermercadohiloscajera;
+package Modelo;
 /**
  * @author Santiago
  */
