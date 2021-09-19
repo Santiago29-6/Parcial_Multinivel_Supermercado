@@ -5,30 +5,39 @@
  */
 package Vista;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 /**
  *
  * @author Santiago
  */
-public class Formulario extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Formulario
-     */
+public class Formulario extends javax.swing.JFrame implements Runnable{
+    Thread hilo;
+    int a=20;
     public Formulario() {
         initComponents();
+        hilo = new Thread(this);
+        hilo.start();
     }
 
     public JComboBox<String> getBoxItemUsuario() {
         return BoxItemUsuario;
+    }
+
+    public JLabel getTitulo() {
+        return Titulo;
+    }
+
+    public void setTitulo(JLabel Titulo) {
+        this.Titulo = Titulo;
     }
 
     public void setBoxItemUsuario(JComboBox<String> BoxItemUsuario) {
@@ -63,19 +72,16 @@ public class Formulario extends javax.swing.JFrame {
         this.Escritorio = Escritorio;
     }
 
-    public JDesktopPane getEscritorio1() {
-        return jDesktopPane1;
-    }
-
-    public void setEscritorio1(JDesktopPane Escritorio1) {
-        this.jDesktopPane1 = Escritorio1;
-    }
-
     public void setTxtUsuario(JTextField TxtUsuario) {
         this.TxtUsuario = TxtUsuario;
     }
     public void ErrorDatos(){
         JOptionPane.showMessageDialog(null,"Usuario o Clave incorrectos");
+    }
+    public int Exito(){
+        int tem;
+        tem=JOptionPane.showConfirmDialog(this, "¿Desea crear un PDF con los registos de ventas?","Confirme:",JOptionPane.YES_NO_OPTION);
+        return tem;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,6 +101,7 @@ public class Formulario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         TxtContrasena = new javax.swing.JPasswordField();
         BtnIngresar = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,37 +132,45 @@ public class Formulario extends javax.swing.JFrame {
 
         BtnIngresar.setText("Ingresar");
 
+        Titulo.setText("Ingreso solo administrativos");
+
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
+                        .addGap(75, 75, 75)
                         .addComponent(BoxItemUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(BtnIngresar))
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(TxtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(TxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(BtnIngresar)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                        .addGap(53, 53, 53)
+                        .addComponent(Titulo)))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(Titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TxtUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(BoxItemUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -163,7 +178,7 @@ public class Formulario extends javax.swing.JFrame {
                     .addComponent(TxtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(BtnIngresar)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         Tablero.addTab("Administrador", Escritorio);
@@ -176,7 +191,7 @@ public class Formulario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Tablero, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+            .addComponent(Tablero)
         );
 
         pack();
@@ -221,11 +236,30 @@ public class Formulario extends javax.swing.JFrame {
         });
     }
 
+    public void run() {
+        int incremento = 10;
+        while(true){
+            this.Titulo.setBounds(a, 20, 150, 22);
+            if(a<5){
+                incremento+=10;
+            }
+            if(a>250){
+                incremento-=10;
+            }
+            try {
+                hilo.sleep(300);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            a = a+ incremento;
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> BoxItemUsuario;
     private javax.swing.JButton BtnIngresar;
     private javax.swing.JPanel Escritorio;
     private javax.swing.JTabbedPane Tablero;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JPasswordField TxtContrasena;
     private javax.swing.JTextField TxtUsuario;
     private javax.swing.JLabel jLabel1;

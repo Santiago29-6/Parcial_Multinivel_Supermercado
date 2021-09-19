@@ -2,7 +2,6 @@ package Controlador;
 
 import Vista.*;
 import Modelo.*;
-import Vista.VistaAdministrador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,9 +26,12 @@ public class Control implements ActionListener{
             verificado=objUsuario.VerificarDatos(objVista.getTxtUsuario().getText(),
                     Long.parseLong(objVista.getTxtContrasena().getText()));
             if(verificado == 0){
-                VistaAdministrador obtVistaAdm = new VistaAdministrador();
-                objVista.getEscritorio1().add(obtVistaAdm);
-                obtVistaAdm.show();
+                int nuevaConfir;
+                nuevaConfir = objVista.Exito();
+                if(nuevaConfir!=0){
+                    // aca se creara el pdf
+                    
+                }
             }else{
                 objVista.ErrorDatos();
             }
