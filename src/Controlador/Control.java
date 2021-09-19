@@ -1,14 +1,11 @@
 package Controlador;
 
-import Vista.Formulario;
+import Vista.*;
+import Modelo.*;
+import Vista.VistaAdministrador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -16,26 +13,26 @@ import java.util.logging.Logger;
  */
 public class Control implements ActionListener{
     public Formulario objVista = new Formulario();
+    public Usuarios objUsuario = new Usuarios();
+
+    public Control() {
+        objVista.setVisible(true);
+        objVista.getBtnIngresar().addActionListener(this);
+    }
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource()== objVista.getBtnIngresar()){
-            File archivo = new File("Usuarios.txt");
-            try {
-                FileReader Leer = new FileReader(archivo);
-                String usu;
-                String clave;
-                int c;
-                while((c = Leer.read())!=1){
-                    
-                }
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("Archivo no existe");
-            } catch (IOException ex) {
-                Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
+            objUsuario.leerTxt("Usuarios.txt");
+            int verificado;
+            verificado=objUsuario.VerificarDatos(objVista.getTxtUsuario().getText(),
+                    Long.parseLong(objVista.getTxtContrasena().getText()));
+            if(verificado == 0){
+                VistaAdministrador obtVistaAdm = new VistaAdministrador();
+                objVista.getEscritorio1().add(obtVistaAdm);
+                obtVistaAdm.show();
+            }else{
+                objVista.ErrorDatos();
             }
-            
-            
         }
     }
     

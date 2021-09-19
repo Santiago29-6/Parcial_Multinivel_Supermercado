@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package parcial_multinel_supermercado;
+
+import Controlador.Control;
+import Modelo.Usuarios;
 
 /**
  *
@@ -15,7 +13,7 @@ public class Parcial_Multinel_SuperMercado {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Control obtControl = new Control();
     }
     
 }
