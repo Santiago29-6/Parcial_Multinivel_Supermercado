@@ -11,15 +11,16 @@ import java.awt.event.ActionListener;
  * @author Santiago
  */
 public class Control implements ActionListener{
-    public Formulario objVista = new Formulario();
+    public view objVista = new view();
     public Usuarios objUsuario = new Usuarios();
 
     public Control() {
         objVista.setVisible(true);
-        objVista.getBtnIngresar().addActionListener(this);
+        //objVista.getBtnIngresar().addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent ae) {
+        /*
         if(ae.getSource()== objVista.getBtnIngresar()){
             objUsuario.leerTxt("Usuarios.txt");
             int verificado;
@@ -35,7 +36,7 @@ public class Control implements ActionListener{
             }else{
                 objVista.ErrorDatos();
             }
-        }
+        }*/
     }
     
 }
