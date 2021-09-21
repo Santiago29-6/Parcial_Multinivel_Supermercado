@@ -13,7 +13,8 @@ public class Parcial_Multinel_SuperMercado {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Control obtControl = new Control();
+        Control objControl = new Control();
+        objControl.cargarinf();
     }
     
 }

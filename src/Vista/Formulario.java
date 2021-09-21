@@ -75,6 +75,16 @@ public class Formulario extends javax.swing.JFrame implements Runnable{
     public void setTxtUsuario(JTextField TxtUsuario) {
         this.TxtUsuario = TxtUsuario;
     }
+
+    public JButton getJbtn_empezar() {
+        return jbtn_empezar;
+    }
+
+    public void setJbtn_empezar(JButton jbtn_empezar) {
+        this.jbtn_empezar = jbtn_empezar;
+    }
+    
+    
     public void ErrorDatos(){
         JOptionPane.showMessageDialog(null,"Usuario o Clave incorrectos");
     }
@@ -94,6 +104,7 @@ public class Formulario extends javax.swing.JFrame implements Runnable{
 
         Tablero = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jbtn_empezar = new javax.swing.JButton();
         Escritorio = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TxtUsuario = new javax.swing.JTextField();
@@ -105,15 +116,23 @@ public class Formulario extends javax.swing.JFrame implements Runnable{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jbtn_empezar.setText("Empezar!");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 287, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(jbtn_empezar)
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(158, Short.MAX_VALUE)
+                .addComponent(jbtn_empezar)
+                .addGap(40, 40, 40))
         );
 
         Tablero.addTab("Cajero", jPanel1);
@@ -265,5 +284,6 @@ public class Formulario extends javax.swing.JFrame implements Runnable{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbtn_empezar;
     // End of variables declaration//GEN-END:variables
 }
