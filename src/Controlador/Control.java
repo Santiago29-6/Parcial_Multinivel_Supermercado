@@ -23,8 +23,8 @@ public class Control implements ActionListener{
         objVista.getBtnIngresar().addActionListener(this);
     }
     
-    public void cargarinf(){
-        String nombreFichero = "fila.txt";  
+    public ArrayList cargarinf(){
+        String nombreFichero = "Fila.txt";  
         BufferedReader br = null;
         ArrayList<String[]> productos = new ArrayList<String[]>();
               
@@ -63,8 +63,22 @@ public class Control implements ActionListener{
             }
         }
         
+        return productos;
         
     }
+    /*
+    public ArrayList cargarcliente(){
+        
+        ArrayList<String[][]> clientes = new ArrayList<String[][]>();
+        
+        cargarinf().forEach((producto) -> {
+            for (String producto : item){
+                
+            }
+        });
+        
+        return clientes;
+    }*/
     
     @Override
     public void actionPerformed(ActionEvent ae) {
