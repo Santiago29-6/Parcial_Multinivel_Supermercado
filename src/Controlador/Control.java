@@ -17,16 +17,18 @@ import java.util.ArrayList;
 public class Control implements ActionListener{
     public Formulario objVista = new Formulario();
     public Usuarios objUsuario = new Usuarios();
+    private listaClientes lista;
 
     public Control() {
         objVista.setVisible(true);
         objVista.getBtnIngresar().addActionListener(this);
+        lista = new listaClientes();
     }
     
-    public ArrayList cargarinf(){
+    public void cargarinf(){
         String nombreFichero = "Fila.txt";  
         BufferedReader br = null;
-        ArrayList<String[]> productos = new ArrayList<String[]>();
+        ArrayList<String> productos = new ArrayList<String>();
               
         try {
            //Crear un objeto BufferedReader al que se le pasa 
@@ -38,8 +40,8 @@ public class Control implements ActionListener{
            while(texto != null)
            {
                //Hacer lo que sea con la línea leída
-               System.out.println(texto);
-               productos.add(texto.split(";"));
+               //System.out.println(texto);
+               productos.add(texto);
                //Leer la siguiente línea
                texto = br.readLine();
            }
@@ -62,20 +64,21 @@ public class Control implements ActionListener{
                 System.out.println(e.getMessage());
             }
         }
+        CajeroThread cajero1 = new CajeroThread(productos,lista.getClientes());
+        cajero1.run();
+        Cajero2 cajero2 = new Cajero2(productos,lista.getClientes());
+        cajero2.run();
+        for(int i=0; i<lista.getClientes().size(); i++){
+            System.out.println("clientes" + lista.getClientes().get(i));
+        }
         
-        return productos;
         
     }
-    /*
-    public ArrayList cargarcliente(){
+    
+    /*public ArrayList cargarcliente(){
         
         ArrayList<String[][]> clientes = new ArrayList<String[][]>();
         
-        cargarinf().forEach((producto) -> {
-            for (String producto : item){
-                
-            }
-        });
         
         return clientes;
     }*/
