@@ -5,12 +5,12 @@ import java.util.ArrayList;
 /**
  * @author migue
  */
-public class Cajero2 extends Thread{
+public class Cajero3 extends Thread{
     
       private ArrayList<String> listac;
     private ArrayList<Cliente> clientes;
 
-    public Cajero2(ArrayList<String> listac, ArrayList<Cliente> clients) {
+    public Cajero3(ArrayList<String> listac, ArrayList<Cliente> clients) {
         this.listac = listac;
         this.clientes = clients;
     }

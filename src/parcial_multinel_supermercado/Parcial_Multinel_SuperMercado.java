@@ -17,7 +17,7 @@ public class Parcial_Multinel_SuperMercado {
         
         
         Control objControl = new Control();
-        objControl.cargarinf();
+        objControl.iniciar();
     }
     
 }

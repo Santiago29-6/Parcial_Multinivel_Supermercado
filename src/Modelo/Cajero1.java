@@ -5,12 +5,13 @@ import java.util.ArrayList;
 /**
  * @author Santiago
  */
-public class CajeroThread extends Thread{
+public class Cajero1 extends Thread{
+    int c = 0;
 
     private ArrayList<String> listac;
     private ArrayList<Cliente> clientes;
 
-    public CajeroThread(ArrayList<String> listac, ArrayList<Cliente> clients) {
+    public Cajero1(ArrayList<String> listac, ArrayList<Cliente> clients) {
         this.listac = listac;
         this.clientes = clients;
     }
@@ -19,9 +20,9 @@ public class CajeroThread extends Thread{
     @Override
     public void run(){
         for(int i = 0 ; i < listac.size(); i++){
-            if(i % 3 == 0){
+            if(i == c){
                 
-                
+                c++;
                 String linea[] = listac.get(i).split(";");
                 Cliente cli = new Cliente();
                     int zero = 0;
@@ -34,8 +35,7 @@ public class CajeroThread extends Thread{
                     cli.getProductos().add(pro);
                     zero=zero+3 ;
                     uno=uno+3;
-                    dos=dos+3;
-                    
+                    dos=dos+3;     
                 }
                 clientes.add(cli);
             }

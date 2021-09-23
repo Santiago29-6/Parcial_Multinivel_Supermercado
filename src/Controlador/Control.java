@@ -25,6 +25,12 @@ public class Control implements ActionListener{
         lista = new listaClientes();
     }
     
+    public void iniciar(){
+        objVista.getJbtn_empezar();
+        objVista.getBtnIngresar();
+        objVista.setVisible(true);
+    }
+    
     public void cargarinf(){
         String nombreFichero = "Fila.txt";  
         BufferedReader br = null;
@@ -64,11 +70,11 @@ public class Control implements ActionListener{
                 System.out.println(e.getMessage());
             }
         }
-        CajeroThread cajero1 = new CajeroThread(productos,lista.getClientes());
+        Cajero1 cajero1 = new Cajero1(productos,lista.getClientes());
         cajero1.run();
-        CajeroThread cajero2 = new CajeroThread(productos,lista.getClientes());
+        Cajero1 cajero2 = new Cajero1(productos,lista.getClientes());
         cajero2.run();
-        CajeroThread cajero3 = new CajeroThread(productos,lista.getClientes());
+        Cajero1 cajero3 = new Cajero1(productos,lista.getClientes());
         cajero3.run();
         for(int i=0; i<lista.getClientes().size(); i++){
             System.out.println("clientes" + lista.getClientes().get(i));
@@ -104,7 +110,7 @@ public class Control implements ActionListener{
             }
         }
         if(ae.getSource() == objVista.getJbtn_empezar()){
-            
+            cargarinf();
         }
     }
     
