@@ -66,8 +66,10 @@ public class Control implements ActionListener{
         }
         CajeroThread cajero1 = new CajeroThread(productos,lista.getClientes());
         cajero1.run();
-        Cajero2 cajero2 = new Cajero2(productos,lista.getClientes());
+        CajeroThread cajero2 = new CajeroThread(productos,lista.getClientes());
         cajero2.run();
+        CajeroThread cajero3 = new CajeroThread(productos,lista.getClientes());
+        cajero3.run();
         for(int i=0; i<lista.getClientes().size(); i++){
             System.out.println("clientes" + lista.getClientes().get(i));
         }
